@@ -1,0 +1,8 @@
+---
+# tasks file for docker
+- name: Docker
+  hosts: docker
+  tasks:
+    - include: instala.yml
+    - include: docker.yml
+...

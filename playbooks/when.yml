@@ -1,0 +1,13 @@
+---
+- name: Exemplo para teste condicioonal
+  hosts: all
+
+  tasks:
+    - name: Testando arquivo do profile
+      command: test -f /etc/profile.d/dexter
+      register: result
+      ignore_errors: yes
+    - name: Configurando a variavel da Dexter
+      shell: echo "export DEXTER=/opt/dexter" > /etc/profile.d/dexter
+      when: result.rc == 0
+...
