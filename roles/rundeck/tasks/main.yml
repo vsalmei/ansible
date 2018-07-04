@@ -1,0 +1,17 @@
+---
+# tasks file for rundeck
+- name: Rundeck
+  hosts: automation
+  tasks:
+    - name: Instala dependencia
+      yum:
+        name: "{{ item }}"
+        state: present
+      with_items:
+        - java-1.8.0-openjdk
+        - http://repo.rundeck.org/latest.rpm
+    - name: Instala rundeck
+      yum:
+        name: rundeck
+        state: present
+...
